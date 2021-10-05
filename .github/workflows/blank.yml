@@ -9,13 +9,15 @@ env:
   job1: "abc"
   job2: "def"
   job3: "xyz"
+  jobs: "abc,def,xyz"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [$job1, $job2, $job3]
+        #node: [$job1, $job2, $job3]
+        node: [$jobs]
     steps:
       - name: Run a one-line script
         run: echo "Hello, world ${{ matrix.node }} !"
