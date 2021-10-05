@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        type: ["${ env.job1 }", "${ env.job2 }", "${ env.job3 }"]
+        type: ["${{ env.job1 }}", "${{ env.job2 }}", "${{ env.job3 }}"]
     steps:
       - name: Run a one-line script
         run: echo Hello, world ${{ matrix.type }}!
