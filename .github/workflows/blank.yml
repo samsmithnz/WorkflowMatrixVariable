@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         #node: ["${{ env.job1 }}", "${{ env.job2 }}", "${{ env.job3 }}"]
-        node: [$env.jobs]
+        node: [$($env.jobs)]
     steps:
       - name: Run a one-line script
         run: echo "Hello, world ${{ matrix.node }} !"
