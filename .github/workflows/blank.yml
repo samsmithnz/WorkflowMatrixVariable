@@ -9,7 +9,7 @@ env:
   job1: "abc"
   job2: "def"
   job3: "xyz"
-  jobs: "abc,def,xyz"
+  jobs: '{"abc","def","xyz"}'
 
 jobs:
   build:
