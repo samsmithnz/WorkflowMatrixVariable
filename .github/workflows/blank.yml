@@ -15,10 +15,12 @@ env:
 jobs:
   prebuild:
     runs-on: ubuntu-latest
-    steps: 
-      run: ${{ fromJson($jobsJSON) }}.Split(",")
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ${{ fromJson(./data.json) }}
   build:
     runs-on: ubuntu-latest
+    if: 0 == 1
     strategy:
       matrix:
         #node: [$job1, $job2, $job3]
