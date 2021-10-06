@@ -20,8 +20,9 @@ jobs:
       #- run: echo ${{ fromJson(./data.json) }}
       - id: set_var
         run: |
+          ls 
           # reference: https://stackoverflow.com/questions/61919141/read-json-file-in-github-actions/61919791
-          content=`cat ./data.json`
+          content=`cat data.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
