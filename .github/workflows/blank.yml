@@ -29,7 +29,8 @@ jobs:
           # end of optional handling for multi line json
           echo "::set-output name=myJson::$content"
       - run: |
-          echo "${{fromJson(steps.set_var.outputs.myJson)}}"
+          echo "Length: ${{fromJson(steps.set_var.outputs.myJson).Length}}"
+          echo "Count: ${{fromJson(steps.set_var.outputs.myJson).Count}}"
   build:
     runs-on: ubuntu-latest
     needs: prepareArray
