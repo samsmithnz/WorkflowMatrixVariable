@@ -13,10 +13,10 @@ env:
   jobsJSON: "{[abc,def,xyz]}"
 
 jobs:
-  #prebuild:
-  #  runs-on: ubuntu-latest
-  #  steps: 
-  #    run: ${{ env.jobs }}.Split(",")
+  prebuild:
+    runs-on: ubuntu-latest
+    steps: 
+      run: ${{ fromJson($jobsJSON) }}.Split(",")
   build:
     runs-on: ubuntu-latest
     strategy:
