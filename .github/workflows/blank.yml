@@ -32,8 +32,8 @@ jobs:
           # end of optional handling for multi line json
           echo "::set-output name=myJson::$content"
       - run: |
-          echo "${{fromJson(steps.set_var.outputs.myJson).ToString()}}"
-          echo "${{fromJson(prepareArray.outputs.myJson).ToString()}}"
+          echo "${{fromJson(steps.set_var.outputs.myJson)}}"
+          echo "${{fromJson(prepareArray.outputs.myJson)}}"
   prepareCheck:
     runs-on: ubuntu-latest
     needs: prepareArray
