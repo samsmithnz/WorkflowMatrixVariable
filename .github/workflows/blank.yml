@@ -15,6 +15,8 @@ env:
 jobs:
   prepareArray:
     runs-on: ubuntu-latest
+    outputs:
+      myJson: ${{ steps.generate-matrix.outputs.services }}
     steps:
       - uses: actions/checkout@v2
       #- run: echo ${{ fromJson(./data.json) }}
@@ -31,6 +33,7 @@ jobs:
           echo "::set-output name=myJson::$content"
       - run: |
           echo "${{fromJson(steps.set_var.outputs.myJson).ToString()}}"
+          echo "${{fromJson(prepareArray.outputs.myJson).ToString()}}"
   prepareCheck:
     runs-on: ubuntu-latest
     needs: prepareArray
