@@ -10,7 +10,7 @@ env:
   job2: "def"
   job3: "xyz"
   jobs: '"abc","def","xyz"'
-  jobsJSON: '{["abc","def","xyz"]}'
+  jobsJSON: "{[abc,def,xyz]}"
 
 jobs:
   #prebuild:
