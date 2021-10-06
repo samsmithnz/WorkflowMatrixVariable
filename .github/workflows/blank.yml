@@ -13,13 +13,14 @@ env:
   jobsJSON: "{[abc,def,xyz]}"
 
 jobs:
-  prebuild:
+  prepareArray:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       #- run: echo ${{ fromJson(./data.json) }}
       - id: set_var
         run: |
+          # reference: https://stackoverflow.com/questions/61919141/read-json-file-in-github-actions/61919791
           content=`cat ./data.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
@@ -31,11 +32,11 @@ jobs:
           echo "${{fromJson(steps.set_var.outputs.myJson)}}"
   build:
     runs-on: ubuntu-latest
-    if: 0 == 1
+    needs: prepareArray
     strategy:
       matrix:
         #node: [$job1, $job2, $job3]
-        node: [$(fromJson($jobsJSON)]
+        node: [$fromJson(steps.set_var.outputs.myJson)]
     steps:
       - name: Run a one-line script
         run: echo "Hello, world ${{ matrix.node }} !"
